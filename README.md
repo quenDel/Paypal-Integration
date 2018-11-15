@@ -32,10 +32,12 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
       require_once("braintree_init.php");
       require_once("lib/Braintree.php");
       echo ($clientToken = $gateway->clientToken()->generate());
-      ?>```  
-    <!-- language: php -->
+      ?>
+      ```  
+   
    *checkout.php*  
-    `<?php
+    <!-- language: php -->
+    ```<?php
       require_once("braintree_init.php");
       require_once 'lib/Braintree.php';
       $nonce = $_POST['nonce'];
@@ -46,4 +48,5 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
         'options' => ['submitForSettlement' => True ]  
       ]);
       ?>
-      `  
+      ```
+      
