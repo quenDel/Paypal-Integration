@@ -9,9 +9,9 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
    Create php file below for generate token and start transction usin nonce -  
    init_gateway.php  
-   
+   ```
    <!-- language: php -->
-   ``<?php 
+   <?php 
         session_start();
         require_once ("lib/autoload.php");
         if(file_exists(__DIR__ . "/../.env")){
@@ -24,5 +24,5 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
             'publicKey' => 'q3s3hvk4sqcr7bv7',
             'privateKey' => '7cb07b1adc065c2c1062c0461c85770d'
         ]);
-   ?>``
-   
+   ?>
+   ```
