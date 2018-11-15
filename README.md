@@ -95,5 +95,20 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
      );
    }
    ```
+   6) Add these to manifest 
+   ```
+   <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+   <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+                  android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="${applicationId}.braintree"/>
+            </intent-filter>
+        </activity>
+   ```
    That's all :)
    
