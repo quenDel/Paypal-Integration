@@ -7,8 +7,8 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
 `Link your Paypal account under Account->My User, if not linked`  
 2. Integrate server side script for generate token.  
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
-   Create php file below for generate token and start transction usin nonce -  
-   init_gateway.php  
+   Create php file below for generate token and start transction usin nonce -    
+   *init_gateway.php*  
    ```
    <!-- language: php -->
    <?php 
