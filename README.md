@@ -25,4 +25,25 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
             'privateKey' => '7cb07b1adc065c2c1062c0461c85770d'
         ]);
    ?>
-   ```
+   ```  
+   *generate_token.php*  
+    <!-- language: php -->
+    ```<?php
+      require_once("braintree_init.php");
+      require_once("lib/Braintree.php");
+      echo ($clientToken = $gateway->clientToken()->generate());
+      ?>```  
+    <!-- language: php -->
+   *checkout.php*  
+    `<?php
+      require_once("braintree_init.php");
+      require_once 'lib/Braintree.php';
+      $nonce = $_POST['nonce'];
+      $amount = $_POST['amount'];
+      $result = $gateway->transaction()->sale([
+        'amount' => $amount,
+        'paymentMethodNonce' => $nonce,
+        'options' => ['submitForSettlement' => True ]  
+      ]);
+      ?>
+      `  
