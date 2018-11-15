@@ -4,13 +4,13 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
 
 # BRAINTREE SDK IMPLEMENTATION
 1. Login to [sendbox account](https://sandbox.braintreegateway.com/login)  
-`Link your Paypal account under Account->My User, if not linked`  
+`Link your Paypal account under *Account->My User*, if not linked`  
 2. Integrate server side script for generate token.  
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
    Create php file below for generate token and start transction usin nonce -    
    *init_gateway.php*  
+      <!-- language: php -->
    ```
-   <!-- language: php -->
    <?php 
         session_start();
         require_once ("lib/autoload.php");
