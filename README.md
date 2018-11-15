@@ -4,11 +4,12 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
 
 # BRAINTREE SDK IMPLEMENTATION
 1. Login to [sendbox account](https://sandbox.braintreegateway.com/login)  
-`Link your Paypal account under *Account->My User*, if not linked`  
+`Link your Paypal account under *Account-> My User*, if not linked`  
 2. Integrate server side script for generate token.  
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
-   Create php file below for generate token and start transction usin nonce -    
-   *init_gateway.php*  
+   Create php file below for generate token and start transction usin nonce -  
+   
+   *init_gateway.php*    (Get merchantId/publicKey/privateKey from dashboad under Settings->API Keys)
       <!-- language: php -->
    ```
    <?php 
@@ -20,12 +21,12 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
         }
         $gateway = new Braintree_Gateway([
             'environment' => 'sandbox',
-            'merchantId' => 'w9cqw8z83y7mndcz',
-            'publicKey' => 'q3s3hvk4sqcr7bv7',
-            'privateKey' => '7cb07b1adc065c2c1062c0461c85770d'
+            'merchantId' => 'xxxxxxxxxxxx',
+            'publicKey' => 'xxxxxxxxxxxxxxxx',
+            'privateKey' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         ]);
    ?>
-   ```  
+   ```
    *generate_token.php*  
     <!-- language: php -->
     ```
@@ -50,4 +51,4 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
       ]);
       ?>
       ```
-      
+#
