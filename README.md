@@ -51,4 +51,49 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
       ]);
       ?>
       ```
-#
+3. Android integration  
+  1. Add gradle path `implementation 'com.braintreepayments.api:drop-in:3.7.1'`  
+  2. Make server call to get clientToken from `generate_token.php`
+  3. Send clientToken to Braintree server to get nonce - 
+   ```
+   public void onBraintreeSubmit(View v) {
+        DropInRequest dropInRequest = new DropInRequest()
+                                          .clientToken("eyJ2ZXJzZlbm1vIjoib2ZmIn0=");
+        startActivityForResult(dropInRequest.getIntent(this), REQUEST_CODE);
+   }
+   ```  
+   4. Override onActivityResult method to receive nonce -
+   ```
+   @Override
+   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+     if (requestCode == REQUEST_CODE) {
+       if (resultCode == Activity.RESULT_OK) {
+         DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
+         // use the result to update your UI and send the payment method nonce to your server
+         PaymentMethodNonce nonce = result.getPaymentMethodNonce();
+         String strNonce = nonce.getNonce();
+         sendNonceForCheckout(strNonce);
+       } else if (resultCode == Activity.RESULT_CANCELED) {
+         // the user canceled
+       } else {
+         // handle errors here, an exception may be available in
+         Exception error = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
+       }
+     }
+   }
+   ```
+   5. Send payment method nonce to server (Checkout now)  
+   ```
+   void sendNonceForCheckout(String nonce) {
+     AsyncHttpClient client = new AsyncHttpClient();
+     RequestParams params = new RequestParams();
+     params.put("payment_method_nonce", nonce);
+     client.post("http://your-server/checkout", params,
+       new AsyncHttpResponseHandler() {
+         // Your implementation here
+       }
+     );
+   }
+   ```
+   That's all :)
+   
