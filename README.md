@@ -5,7 +5,7 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
 # BRAINTREE SDK IMPLEMENTATION
 1. Login to [sendbox account](https://sandbox.braintreegateway.com/login)  
 `Link your Paypal account under *Account-> My User*, if not linked`  
-2. Integrate server side script for generate token.  
+2. ***Integrate server side script for generate token***  
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
    Create php file below for generate token and start transction usin nonce -  
    
@@ -51,10 +51,10 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
       ]);
       ?>
       ```
-3. Android integration  
-  1. Add gradle path `implementation 'com.braintreepayments.api:drop-in:3.7.1'`  
-  2. Make server call to get clientToken from `generate_token.php`
-  3. Send clientToken to Braintree server to get nonce - 
+3. ***Android integration***
+  1) Add gradle path `implementation 'com.braintreepayments.api:drop-in:3.7.1'`  
+  2) Make server call to get clientToken from `generate_token.php`
+  3) Send clientToken to Braintree server to get nonce - 
    ```
    public void onBraintreeSubmit(View v) {
         DropInRequest dropInRequest = new DropInRequest()
@@ -62,7 +62,7 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
         startActivityForResult(dropInRequest.getIntent(this), REQUEST_CODE);
    }
    ```  
-   4. Override onActivityResult method to receive nonce -
+   4) Override onActivityResult method to receive nonce -
    ```
    @Override
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -82,7 +82,7 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
      }
    }
    ```
-   5. Send payment method nonce to server (Checkout now)  
+   5) Send payment method nonce to server (Checkout now)  
    ```
    void sendNonceForCheckout(String nonce) {
      AsyncHttpClient client = new AsyncHttpClient();
