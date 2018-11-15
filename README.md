@@ -8,7 +8,7 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
 2. Integrate server side script for generate token.  
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
    Create php file below for generate token and start transction usin nonce -  
-   *init_gateway.php*  
+   init_gateway.php  
    ```<?php 
         session_start();
         require_once ("lib/autoload.php");
@@ -25,12 +25,12 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
    ?>```  
    
    *generate_token.php*  
-    `<?php
+    ```<?php
       require_once("braintree_init.php");
       require_once("lib/Braintree.php");
       echo ($clientToken = $gateway->clientToken()->generate());
-      ?>
-   `  
+      ?>```
+      
    *checkout.php*  
     `<?php
       require_once("braintree_init.php");
