@@ -28,16 +28,17 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
    ```  
    *generate_token.php*  
     <!-- language: php -->
-    ```<?php
-      require_once("braintree_init.php");
-      require_once("lib/Braintree.php");
-      echo ($clientToken = $gateway->clientToken()->generate());
+    ```
+    <?php
+         require_once("braintree_init.php");
+         require_once("lib/Braintree.php");
+         echo ($clientToken = $gateway->clientToken()->generate());
       ?>
       ```  
-   
    *checkout.php*  
     <!-- language: php -->
-    ```<?php
+    ```
+    <?php
       require_once("braintree_init.php");
       require_once 'lib/Braintree.php';
       $nonce = $_POST['nonce'];
