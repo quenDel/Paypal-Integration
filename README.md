@@ -4,7 +4,7 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
 
 # BRAINTREE SDK IMPLEMENTATION
 1. Login to [sendbox account](https://sandbox.braintreegateway.com/login)  
-`Link your Paypal account under *Account-> My User*, if not linked`  
+`Link your Paypal account under *Account-> My User*, if not linked and enabled Log In with PayPal also`  
 2. ***Integrate server side script for generate token***  
    Download library from [here](https://developers.braintreepayments.com/start/hello-server/php)  
    Create php file below for generate token and start transction usin nonce -  
@@ -47,6 +47,8 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
       $result = $gateway->transaction()->sale([
         'amount' => $amount,
         'paymentMethodNonce' => $nonce,
+        'orderId' => 'order-id52452',
+        'merchantAccountId' => 'quendel',  
         'options' => ['submitForSettlement' => True ]  
       ]);
       ?>
@@ -110,5 +112,6 @@ There are two way to implementation - [Express Checkout or Native Checkout](http
             </intent-filter>
         </activity>
    ```
+   
    That's all :)
    
